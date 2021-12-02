@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/bootstrap/dist/css/bootstrap.min.css' />
+    <link rel='stylesheet' href='/@fortawesome/fontawesome-free/css/all.min.css' />
+    <link rel='stylesheet' href='/Content/app.css' />
+  </head>
+
+    <%- include ../partials/main_nav.ejs%>
+
+<body  background="">
+    <main class="container-fluid">
+        <div class="container list-container">
+                <h1><%=title%></title></h1> 
+                <!--contents-->
+            <% for(let i=0; i<Records.length; i++) { %>
+                <div class="content-wrap">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <a class="btn btn-info add-btn add-to-card" style="width:50%;" href="/remove-from-wishlist/<%= Records[i]._id %>">
+                                <span>Remove from <i class="fa fa-heart"></i></span></a>
+                            <div class="img-align">
+                                <img src="<%= Records[i].image %>" height="300" width="250"  >
+                            </div> 
+                            <h5 class="card-title"><%= Records[i].title %></h5>
+                            <p class="card-text"> <%= Records[i].description %>
+                            <div class="flex items-center justify-around mt-6">
+                                <span class="font-bold text-lg list-price">$<%= Records[i].price %></span>
+                                <a class="btn btn-info add-btn add-to-card" style="width:50%;" href="/add-to-cart/<%= Records[i]._id %>">
+                                    <span>Add to <i class="fa fa-shopping-cart"></i></span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <% } %>  
+    </div>
+    </main>
+</body>
